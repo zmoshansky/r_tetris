@@ -1,0 +1,5 @@
+[package]
+
+name = "r_tetris"
+version = "0.0.1"
+authors = ["Zachary <zmoshansky@gmail.com>"]
