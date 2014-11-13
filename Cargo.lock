@@ -3,7 +3,8 @@ name = "r_tetris"
 version = "0.0.1"
 dependencies = [
  "event 0.0.0 (git+https://github.com/pistondevelopers/event)",
- "graphics 0.0.0 (git+https://github.com/pistondevelopers/rust-graphics)",
+ "graphics 0.0.0 (git+https://github.com/pistondevelopers/graphics)",
+ "input 0.0.0 (git+https://github.com/pistondevelopers/input)",
  "piston 0.0.0 (git+https://github.com/pistondevelopers/piston)",
  "sdl2_window 0.0.0 (git+https://github.com/pistondevelopers/sdl2_window)",
 ]
@@ -81,15 +82,6 @@ dependencies = [
 name = "graphics"
 version = "0.0.0"
 source = "git+https://github.com/pistondevelopers/graphics#8c3a975dc7e2f353e344a957238e0953d1b1931a"
-dependencies = [
- "texture 0.0.0 (git+https://github.com/PistonDevelopers/texture)",
- "vecmath 0.0.0 (git+https://github.com/PistonDevelopers/vecmath)",
-]
-
-[[package]]
-name = "graphics"
-version = "0.0.0"
-source = "git+https://github.com/pistondevelopers/rust-graphics#8c3a975dc7e2f353e344a957238e0953d1b1931a"
 dependencies = [
  "texture 0.0.0 (git+https://github.com/PistonDevelopers/texture)",
  "vecmath 0.0.0 (git+https://github.com/PistonDevelopers/vecmath)",

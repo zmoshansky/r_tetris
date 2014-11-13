@@ -9,9 +9,9 @@ authors = ["Zachary <zmoshansky@gmail.com>"]
 name = "r_tetris"
 path = "src/main.rs"
 
-[dependencies.graphics]
-git = "https://github.com/pistondevelopers/rust-graphics"
 
+# main.rs
+#######################
 [dependencies.sdl2_window]
 git = "https://github.com/pistondevelopers/sdl2_window"
 
@@ -21,5 +21,10 @@ git = "https://github.com/pistondevelopers/event"
 [dependencies.piston]
 git = "https://github.com/pistondevelopers/piston"
 
-#[dependencies.glfw_window]
-#git = "https://github.com/PistonDevelopers/glfw_window"
+# tetris.rs
+#######################
+[dependencies.graphics]
+git = "https://github.com/pistondevelopers/graphics"
+
+[dependencies.input]
+git = "https://github.com/pistondevelopers/input"

@@ -9,6 +9,9 @@ use sdl2_window::Sdl2Window;
 use piston::AssetStore;
 use event::WindowSettings;
 
+mod tetris;
+mod active;
+mod tetromino;
 
 fn main() {
     let (width, height) = (400, 800);
@@ -20,11 +23,10 @@ fn main() {
             fullscreen: false,
             exit_on_esc: true,
             samples: 0,
-            // background_color: [0.2, 0.2, 0.2, 0.2],
         }
     );
 
     let mut assets = AssetStore::from_folder("assets");
-    // let mut app = tetris::Tetris::new(1.0);
-    // app.run(&mut window, &mut assets);
+    let mut app = tetris::Tetris::new(1.0);
+    // app.run(&mut window, &mut assets); //TODO Replace with new version of game
 }
