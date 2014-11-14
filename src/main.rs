@@ -9,7 +9,6 @@ extern crate opengl_graphics;
 use std::cell::RefCell;
 use std::path;
 use std::os::self_exe_path;
-// use std::io::fs::PathExtensions;
 use sdl2_window::Sdl2Window;
 use event::{ WindowSettings, RenderEvent, UpdateEvent, Input};
 use event_loop::Events;
@@ -43,7 +42,6 @@ fn main() {
     // };
     // Ok(exe_path.join(Path::new("assets")));
 
-    // app.load_assets(&mut exe_path);
     let mut asset_path = exe_path.unwrap().join(Path::new("assets"));
     app.load_assets(&mut asset_path);
 
@@ -52,7 +50,7 @@ fn main() {
 
     for e in Events::new(&window) {
         e.render(|r| app.render(window.borrow_mut().deref_mut(), &mut gl, r));
-        // e.update(|u| app.update(window.borrow_mut().deref_mut(), u));
+        e.update(|u| app.update(window.borrow_mut().deref_mut(), u));
         // e.input(|u| app.input(window.borrow_mut().deref_mut(), u));
     }
 }

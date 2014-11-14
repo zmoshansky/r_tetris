@@ -1,17 +1,13 @@
 extern crate input;
 extern crate graphics;
-extern crate sprite;
 
 use std::rc::Rc;
 use std::default::Default;
-// use std::path;
-use std::io::fs::PathExtensions;
+use std::path;
 use opengl_graphics::{Gl, Texture};
 use event::{Window, UpdateArgs, RenderArgs, PressEvent,};
-// use event_loop::{EventMap,};
 use self::graphics::*;
 use self::input::keyboard;
-use self::sprite::Sprite;
 
 
 
@@ -111,7 +107,7 @@ impl<'a> Tetris<'a>  {
   pub fn render<W: Window>(&mut self, _: &mut W, gl: &mut Gl, args: &RenderArgs) {
     // Set up a context to draw into.
     let context = &Context::abs(args.width as f64, args.height as f64);
-    // context.rgba(0.0,1.0,0.0,1.0).draw(back_end);
+    context.rgba(0.0,0.0,0.0,1.0).draw(gl);
     let c = context.zoom(self.scale);
     fn pos(n: uint) -> f64 { n as f64 * TILE_SIZE }
     for y in range(0u, BOARD_HEIGHT) {
@@ -121,6 +117,16 @@ impl<'a> Tetris<'a>  {
     }
     for &(x,y) in self.active_tetromino.as_points().iter() {
       c.trans(pos(x), pos(y)).image(self.block.as_ref().unwrap()).color(self.active_tetromino.get_color().as_rgba()).draw(gl);
+    }
+  }
+
+  pub fn update<W: Window>(&mut self, _: &mut W, args: &UpdateArgs) {
+    if self.paused { return }
+
+    match self.state {
+      Playing   => self.gravity(args.dt),
+      Dropping  => self.gravity(0.12 + args.dt),
+      _ => {}
     }
   }
 }
