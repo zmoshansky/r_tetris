@@ -4,11 +4,16 @@ extern crate sprite;
 
 use std::rc::Rc;
 use std::default::Default;
-use piston::{AssetStore, UpdateArgs,};
-use event::RenderArgs;
+// use std::path;
+use std::io::fs::PathExtensions;
+use opengl_graphics::{Gl, Texture};
+use event::{Window, UpdateArgs, RenderArgs, PressEvent,};
+// use event_loop::{EventMap,};
 use self::graphics::*;
 use self::input::keyboard;
 use self::sprite::Sprite;
+
+
 
 use active::ActiveTetromino;
 use tetromino::Color;
@@ -24,7 +29,7 @@ enum State {
   Defeated
 }
 
-pub struct Tetris {
+pub struct Tetris<'a> {
   gravity_accumulator: f64,
   gravity_factor: f64,
   tetromino_count: uint,
@@ -32,13 +37,13 @@ pub struct Tetris {
   board: [[Option<Color>,..BOARD_WIDTH],..BOARD_HEIGHT],
   state: State,
   // block: Option<Sprite<ImageSize>>, // TODO, Should be Texture/Sprite
-  block: Option<Rc<int>>, // TODO, Should be Texture/Sprite
+  block: Option<Texture>, // TODO, Should be Texture/Sprite
     paused: bool,
     scale: f64,
 }
 
-impl Tetris {
-  pub fn new(scale: f64) -> Tetris {
+impl<'a> Tetris<'a>  {
+  pub fn new(scale: f64) -> Tetris<'a>  {
     Tetris {
       gravity_accumulator: 0.0,
       gravity_factor: 1.0,
@@ -90,51 +95,78 @@ impl Tetris {
     self.board = [[Default::default(),..BOARD_WIDTH],..BOARD_HEIGHT];
     self.active_tetromino = ActiveTetromino::new();
   }
-}
 
-// impl Game for Tetris {
-  // fn load(&mut self, assets: &mut AssetStore) {
+  // RENDERING MAGIC...
+  /////////////////////////////////////////////
+
+  // pub fn load_assets(&mut self, assets: &mut AssetStore) {
   //   let image = assets.path("block.png").unwrap();
   //       self.block = Some(Texture::from_path(&image).unwrap());
   // }
-  // fn render(&self, c: &Context, args: RenderArgs) {
-  //       let c = c.zoom(self.scale);
-  //   fn pos(n: uint) -> f64 { n as f64 * TILE_SIZE }
-  //   for y in range(0u, BOARD_HEIGHT) {
-  //     for x in range(0u, BOARD_WIDTH) {
-  //       self.board[y][x].as_ref().map(|e| c.trans(pos(x), pos(y)).image(self.block.as_ref().unwrap()).color(e.as_rgba()).draw(args.gl));
-  //     }
-  //   }
-  //   for &(x,y) in self.active_tetromino.as_points().iter() {
-  //     c.trans(pos(x), pos(y)).image(self.block.as_ref().unwrap()).color(self.active_tetromino.get_color().as_rgba()).draw(args.gl);
-  //   }
-  // }
-  // fn update(&mut self, args: UpdateArgs) {
-  //       if self.paused { return }
+  pub fn load_assets(&mut self, assets: &mut Path) {
+    assets.push("block.png");
+    self.block = Some(Texture::from_path(assets).unwrap());
+  }
 
-  //   match self.state {
-  //     Playing   => self.gravity(args.dt),
-  //     Dropping  => self.gravity(0.12 + args.dt),
-  //     _ => {}
-  //   }
+  pub fn render<W: Window>(&mut self, _: &mut W, gl: &mut Gl, args: &RenderArgs) {
+    // Set up a context to draw into.
+    let context = &Context::abs(args.width as f64, args.height as f64);
+    // context.rgba(0.0,1.0,0.0,1.0).draw(back_end);
+    let c = context.zoom(self.scale);
+    fn pos(n: uint) -> f64 { n as f64 * TILE_SIZE }
+    for y in range(0u, BOARD_HEIGHT) {
+      for x in range(0u, BOARD_WIDTH) {
+        self.board[y][x].as_ref().map(|e| c.trans(pos(x), pos(y)).image(self.block.as_ref().unwrap()).color(e.as_rgba()).draw(gl));
+      }
+    }
+    for &(x,y) in self.active_tetromino.as_points().iter() {
+      c.trans(pos(x), pos(y)).image(self.block.as_ref().unwrap()).color(self.active_tetromino.get_color().as_rgba()).draw(gl);
+    }
+  }
+}
+
+
+// impl<'t> EventMap<Box<PressEvent+'t>> for Tetris {
+//   fn render(args: RenderArgs) {
+//   //       let c = c.zoom(self.scale);
+//   //   fn pos(n: uint) -> f64 { n as f64 * TILE_SIZE }
+//   //   for y in range(0u, BOARD_HEIGHT) {
+//   //     for x in range(0u, BOARD_WIDTH) {
+//   //       self.board[y][x].as_ref().map(|e| c.trans(pos(x), pos(y)).image(self.block.as_ref().unwrap()).color(e.as_rgba()).draw(args.gl));
+//   //     }
+//   //   }
+//   //   for &(x,y) in self.active_tetromino.as_points().iter() {
+//   //     c.trans(pos(x), pos(y)).image(self.block.as_ref().unwrap()).color(self.active_tetromino.get_color().as_rgba()).draw(args.gl);
+//   //   }
   // }
-  // fn key_press(&mut self, args: KeyPressArgs) {
-  //   match (self.state, args.key) {
-  //     (Defeated, keyboard::F1)  => self.play_again(),
-  //     (Playing, keyboard::E) if !self.paused
-  //               => self.active_tetromino.try_rotate_right(&self.board),
-  //     (Playing, keyboard::Q) if !self.paused
-  //               => self.active_tetromino.try_rotate_left(&self.board),
-  //     (Playing, keyboard::A) | (Playing, keyboard::Left) if !self.paused
-  //       => self.active_tetromino.try_move_left(&self.board),
-  //     (Playing, keyboard::D) | (Playing, keyboard::Right) if !self.paused
-  //       => self.active_tetromino.try_move_right(&self.board),
-  //     (Playing, keyboard::Down) | (Playing, keyboard::S) if !self.paused
-  //       => self.state = Dropping,
-  //           (Playing, keyboard::P)
-  //               => self.paused = !self.paused,
-  //     _ => {}
-  //   }
-  // }
+
+//   fn update(&mut self, args: UpdateArgs) {
+//   //       if self.paused { return }
+
+//   //   match self.state {
+//   //     Playing   => self.gravity(args.dt),
+//   //     Dropping  => self.gravity(0.12 + args.dt),
+//   //     _ => {}
+//   //   }
+//   }
+
+//   fn input(&mut self, args: PressEvent) {
+//   //   match (self.state, args.key) {
+//   //     (Defeated, keyboard::F1)  => self.play_again(),
+//   //     (Playing, keyboard::E) if !self.paused
+//   //               => self.active_tetromino.try_rotate_right(&self.board),
+//   //     (Playing, keyboard::Q) if !self.paused
+//   //               => self.active_tetromino.try_rotate_left(&self.board),
+//   //     (Playing, keyboard::A) | (Playing, keyboard::Left) if !self.paused
+//   //       => self.active_tetromino.try_move_left(&self.board),
+//   //     (Playing, keyboard::D) | (Playing, keyboard::Right) if !self.paused
+//   //       => self.active_tetromino.try_move_right(&self.board),
+//   //     (Playing, keyboard::Down) | (Playing, keyboard::S) if !self.paused
+//   //       => self.state = Dropping,
+//   //           (Playing, keyboard::P)
+//   //               => self.paused = !self.paused,
+//   //     _ => {}
+//   //   }
+//   }
 // }
 

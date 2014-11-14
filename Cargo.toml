@@ -18,11 +18,17 @@ git = "https://github.com/pistondevelopers/sdl2_window"
 [dependencies.event]
 git = "https://github.com/pistondevelopers/event"
 
-[dependencies.piston]
-git = "https://github.com/pistondevelopers/piston"
+[dependencies.event_loop]
+git = "https://github.com/pistondevelopers/event_loop"
+
+#[dependencies.piston]
+#git = "https://github.com/pistondevelopers/piston"
 
 # tetris.rs
 #######################
+[dependencies.opengl_graphics]
+git = "https://github.com/PistonDevelopers/opengl_graphics.git"
+
 [dependencies.graphics]
 git = "https://github.com/pistondevelopers/graphics"
 

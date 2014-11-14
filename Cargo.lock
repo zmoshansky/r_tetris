@@ -3,27 +3,11 @@ name = "r_tetris"
 version = "0.0.1"
 dependencies = [
  "event 0.0.0 (git+https://github.com/pistondevelopers/event)",
+ "event_loop 0.0.0 (git+https://github.com/pistondevelopers/event_loop)",
  "graphics 0.0.0 (git+https://github.com/pistondevelopers/graphics)",
  "input 0.0.0 (git+https://github.com/pistondevelopers/input)",
- "piston 0.0.0 (git+https://github.com/pistondevelopers/piston)",
+ "opengl_graphics 0.0.0 (git+https://github.com/PistonDevelopers/opengl_graphics.git)",
  "sdl2_window 0.0.0 (git+https://github.com/pistondevelopers/sdl2_window)",
-]
-
-[[package]]
-name = "ai_behavior"
-version = "0.0.0"
-source = "git+https://github.com/pistondevelopers/ai_behavior#9037e1a5727e1df958d9a0be7e9e5fa683c5b801"
-dependencies = [
- "event 0.0.0 (git+https://github.com/pistondevelopers/event)",
-]
-
-[[package]]
-name = "cam"
-version = "0.0.0"
-source = "git+https://github.com/pistondevelopers/cam#e80ce33e3e55f6f08ab88a875b90567285df5deb"
-dependencies = [
- "event 0.0.0 (git+https://github.com/pistondevelopers/event)",
- "vecmath 0.0.0 (git+https://github.com/PistonDevelopers/vecmath)",
 ]
 
 [[package]]
@@ -49,11 +33,6 @@ source = "git+https://github.com/pistondevelopers/event_loop#056279c00b22b5c95c0
 dependencies = [
  "current 0.0.0 (git+https://github.com/pistondevelopers/current)",
 ]
-
-[[package]]
-name = "genmesh"
-version = "0.1.0"
-source = "git+https://github.com/csherratt/genmesh.git#bf63483afb66893957b156c94e15fec99567b3a6"
 
 [[package]]
 name = "gl"
@@ -103,25 +82,15 @@ version = "0.0.2"
 source = "git+https://github.com/bjz/gl-rs#218f14c94d79331fc5487f8564dc71f7ec4a22a8"
 
 [[package]]
-name = "noise-rs"
-version = "0.0.1"
-source = "git+https://github.com/bjz/noise-rs#0f5cc9842328338beaa24e86843a6746ffe4239f"
-
-[[package]]
-name = "piston"
+name = "opengl_graphics"
 version = "0.0.0"
-source = "git+https://github.com/pistondevelopers/piston#85a4604d7ff8cc7b9de61b5a805c287339147025"
+source = "git+https://github.com/PistonDevelopers/opengl_graphics.git#e6f53f7e705c855d30b8396775b0a0a30d424d94"
 dependencies = [
- "cam 0.0.0 (git+https://github.com/pistondevelopers/cam)",
- "event 0.0.0 (git+https://github.com/pistondevelopers/event)",
- "genmesh 0.1.0 (git+https://github.com/csherratt/genmesh.git)",
+ "gl 0.0.1 (git+https://github.com/bjz/gl-rs)",
  "graphics 0.0.0 (git+https://github.com/pistondevelopers/graphics)",
  "image 0.1.0 (git+https://github.com/pistondevelopers/image)",
- "input 0.0.0 (git+https://github.com/pistondevelopers/input)",
- "noise-rs 0.0.1 (git+https://github.com/bjz/noise-rs)",
  "shader_version 0.0.0 (git+https://github.com/pistondevelopers/shader_version)",
- "sprite 0.0.0 (git+https://github.com/pistondevelopers/sprite)",
- "vecmath 0.0.0 (git+https://github.com/PistonDevelopers/vecmath)",
+ "texture 0.0.0 (git+https://github.com/PistonDevelopers/texture)",
 ]
 
 [[package]]
@@ -152,25 +121,9 @@ version = "0.0.0"
 source = "git+https://github.com/pistondevelopers/shader_version#03509f5d6dc3c1ccf64471615f438be25186e73a"
 
 [[package]]
-name = "sprite"
-version = "0.0.0"
-source = "git+https://github.com/pistondevelopers/sprite#3307e386c0927932bcfff258b03288d696e61ef0"
-dependencies = [
- "ai_behavior 0.0.0 (git+https://github.com/pistondevelopers/ai_behavior)",
- "event 0.0.0 (git+https://github.com/pistondevelopers/event)",
- "graphics 0.0.0 (git+https://github.com/pistondevelopers/graphics)",
- "uuid 0.0.1 (git+https://github.com/rust-lang/uuid)",
-]
-
-[[package]]
 name = "texture"
 version = "0.0.0"
 source = "git+https://github.com/PistonDevelopers/texture#8ef1371decddec0510e21b8b6534876945da35fc"
-
-[[package]]
-name = "uuid"
-version = "0.0.1"
-source = "git+https://github.com/rust-lang/uuid#8f2ea67d1bd8a49b01c3d7f0ec96f18803b2e5dd"
 
 [[package]]
 name = "vecmath"
