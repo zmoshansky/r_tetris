@@ -7,11 +7,10 @@ extern crate event_loop;
 extern crate opengl_graphics;
 
 use std::cell::RefCell;
-use std::os::self_exe_path;
 use sdl2_window::Sdl2Window;
 use event::{ WindowSettings, RenderEvent, UpdateEvent, PressEvent};
 use event_loop::Events;
-use self::opengl_graphics::Gl;
+use opengl_graphics::Gl;
 
 mod tetris;
 mod active;
@@ -31,7 +30,7 @@ fn main() {
     );
 
     let mut app = tetris::Tetris::new(1.0);
-    let mut asset_path = self_exe_path().unwrap().join(Path::new("assets"));
+    let mut asset_path = Path::new("assets");
     app.load_assets(&mut asset_path);
 
     let window = RefCell::new(window);

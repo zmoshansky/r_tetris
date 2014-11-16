@@ -13,25 +13,25 @@ dependencies = [
 [[package]]
 name = "current"
 version = "0.0.0"
-source = "git+https://github.com/pistondevelopers/current#3d2025248d34690ba0ca84a5b7628dc776614537"
+source = "git+https://github.com/PistonDevelopers/current#281637a9f018f41ed44a1525a0f1666a94d7040a"
 
 [[package]]
 name = "event"
 version = "0.0.0"
-source = "git+https://github.com/pistondevelopers/event#8e4ea0256d8b7856d2d109c7f1760bd970988977"
+source = "git+https://github.com/pistondevelopers/event#496d8c6bad1f5539aa09d2cb4c2f7f23ab79b40b"
 dependencies = [
- "current 0.0.0 (git+https://github.com/pistondevelopers/current)",
+ "current 0.0.0 (git+https://github.com/PistonDevelopers/current)",
  "event_loop 0.0.0 (git+https://github.com/pistondevelopers/event_loop)",
  "input 0.0.0 (git+https://github.com/pistondevelopers/input)",
- "window 0.0.0 (git+https://github.com/pistondevelopers/window)",
+ "window 0.0.0 (git+https://github.com/PistonDevelopers/window)",
 ]
 
 [[package]]
 name = "event_loop"
 version = "0.0.0"
-source = "git+https://github.com/pistondevelopers/event_loop#056279c00b22b5c95c084cac64ca43f18a1b6093"
+source = "git+https://github.com/pistondevelopers/event_loop#390bc635dc7236404a357da4e6fc0989fa7dc691"
 dependencies = [
- "current 0.0.0 (git+https://github.com/pistondevelopers/current)",
+ "current 0.0.0 (git+https://github.com/PistonDevelopers/current)",
 ]
 
 [[package]]
@@ -60,21 +60,21 @@ dependencies = [
 [[package]]
 name = "graphics"
 version = "0.0.0"
-source = "git+https://github.com/pistondevelopers/graphics#8c3a975dc7e2f353e344a957238e0953d1b1931a"
+source = "git+https://github.com/pistondevelopers/graphics#d203bab74f7d5e58b98fa8dfc7bf81293c94defb"
 dependencies = [
- "texture 0.0.0 (git+https://github.com/PistonDevelopers/texture)",
+ "texture 0.0.0 (git+https://github.com/pistondevelopers/texture)",
  "vecmath 0.0.0 (git+https://github.com/PistonDevelopers/vecmath)",
 ]
 
 [[package]]
 name = "image"
 version = "0.1.0"
-source = "git+https://github.com/pistondevelopers/image#64c6dbd03d4a72cdd9049547e11419be8ab3041a"
+source = "git+https://github.com/pistondevelopers/image#858c33df5a1c45d7961d9b8a920233e623728a2a"
 
 [[package]]
 name = "input"
 version = "0.0.0"
-source = "git+https://github.com/pistondevelopers/input#27bfb0e86d6f01c26098eab279ae3a07eaac909a"
+source = "git+https://github.com/pistondevelopers/input#160d6a9896ee771f1096a74c3276c2d5ddd89b0c"
 
 [[package]]
 name = "khronos_api"
@@ -84,13 +84,13 @@ source = "git+https://github.com/bjz/gl-rs#218f14c94d79331fc5487f8564dc71f7ec4a2
 [[package]]
 name = "opengl_graphics"
 version = "0.0.0"
-source = "git+https://github.com/PistonDevelopers/opengl_graphics.git#e6f53f7e705c855d30b8396775b0a0a30d424d94"
+source = "git+https://github.com/PistonDevelopers/opengl_graphics.git#944933e3e857ec004a07639ef5bdf6a62b9e3dc7"
 dependencies = [
  "gl 0.0.1 (git+https://github.com/bjz/gl-rs)",
  "graphics 0.0.0 (git+https://github.com/pistondevelopers/graphics)",
  "image 0.1.0 (git+https://github.com/pistondevelopers/image)",
  "shader_version 0.0.0 (git+https://github.com/pistondevelopers/shader_version)",
- "texture 0.0.0 (git+https://github.com/PistonDevelopers/texture)",
+ "texture 0.0.0 (git+https://github.com/pistondevelopers/texture)",
 ]
 
 [[package]]
@@ -106,36 +106,36 @@ source = "git+https://github.com/AngryLawyer/rust-sdl2#93cc0d4184b3f66dbced0e467
 [[package]]
 name = "sdl2_window"
 version = "0.0.0"
-source = "git+https://github.com/pistondevelopers/sdl2_window#64aa31962218ad8e224b907740d1194ce2c46f64"
+source = "git+https://github.com/pistondevelopers/sdl2_window#ead431f03ab3f9e6cd62f0b118e46ffc84e0e888"
 dependencies = [
  "gl 0.0.1 (git+https://github.com/bjz/gl-rs)",
  "input 0.0.0 (git+https://github.com/pistondevelopers/input)",
  "sdl2 0.0.1-alpha.1 (git+https://github.com/AngryLawyer/rust-sdl2)",
  "shader_version 0.0.0 (git+https://github.com/pistondevelopers/shader_version)",
- "window 0.0.0 (git+https://github.com/pistondevelopers/window)",
+ "window 0.0.0 (git+https://github.com/PistonDevelopers/window)",
 ]
 
 [[package]]
 name = "shader_version"
 version = "0.0.0"
-source = "git+https://github.com/pistondevelopers/shader_version#03509f5d6dc3c1ccf64471615f438be25186e73a"
+source = "git+https://github.com/pistondevelopers/shader_version#c8a52272f66e9e2a1470a26e895d21af2b635171"
 
 [[package]]
 name = "texture"
 version = "0.0.0"
-source = "git+https://github.com/PistonDevelopers/texture#8ef1371decddec0510e21b8b6534876945da35fc"
+source = "git+https://github.com/pistondevelopers/texture#0dd5a5f2029b4a56a02f8e528087b93496c6ac52"
 
 [[package]]
 name = "vecmath"
 version = "0.0.0"
-source = "git+https://github.com/PistonDevelopers/vecmath#052095e8da431a8996d9b90d6745ee2d172022f2"
+source = "git+https://github.com/PistonDevelopers/vecmath#f6fc01026677be506958dee6f61a40b991fe5bc1"
 
 [[package]]
 name = "window"
 version = "0.0.0"
-source = "git+https://github.com/pistondevelopers/window#7ca4e5005b90363a92c585764aa63fc82d10acba"
+source = "git+https://github.com/PistonDevelopers/window#888aeccd551a9bd12cd0324a13b919c1ae34e9ee"
 dependencies = [
- "current 0.0.0 (git+https://github.com/pistondevelopers/current)",
+ "current 0.0.0 (git+https://github.com/PistonDevelopers/current)",
  "event_loop 0.0.0 (git+https://github.com/pistondevelopers/event_loop)",
  "input 0.0.0 (git+https://github.com/pistondevelopers/input)",
 ]

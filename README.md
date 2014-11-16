@@ -13,5 +13,24 @@ Keys:
 - F1 to restart after losing.
 - P to pause
 
-Installation:
-- `Cargo run`
+
+## Building Instructions
+
+To build this repository, you need [Cargo](https://github.com/rust-lang/cargo).
+
+Clone this repository
+```
+git clone https://github.com/zmoshansky/r_tetris.git
+```
+
+Use Cargo to build
+```
+cargo build
+```
+
+Play!
+```
+./bin/r_tetris
+```
+
+Compiled Succesfully with `rustc 0.13.0-nightly (7e43f419c 2014-11-15 13:22:24 +0000)`
