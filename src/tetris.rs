@@ -65,9 +65,9 @@ impl Tetris  {
         if self.state == Playing || self.state == Dropping {
           self.state = Playing;
           let mut board: [[Option<Color>,..BOARD_WIDTH],..BOARD_HEIGHT] = [[None,..BOARD_WIDTH],..BOARD_HEIGHT];
-        //   for (new,old) in board.mut_iter().rev().zip(self.board.iter().rev().filter(|row| row.iter().any(|color| !color))) {
-        //     *new = *old.clone();
-        //   }
+          for (new,old) in board.iter_mut().rev().zip(self.board.iter().rev().filter(|row| row.iter().any(|color| color.is_some()))) {
+            *new = *old.clone();
+          }
           self.board = board;
           self.active_tetromino = ActiveTetromino::new();
           self.tetromino_count += 1;
