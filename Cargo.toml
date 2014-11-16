@@ -21,9 +21,6 @@ git = "https://github.com/pistondevelopers/event"
 [dependencies.event_loop]
 git = "https://github.com/pistondevelopers/event_loop"
 
-#[dependencies.piston]
-#git = "https://github.com/pistondevelopers/piston"
-
 # tetris.rs
 #######################
 [dependencies.opengl_graphics]

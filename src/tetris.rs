@@ -130,7 +130,7 @@ impl Tetris  {
         Keyboard(key)  => {
             match (self.state, key) {
               (Defeated, keyboard::F1)  => self.play_again(),
-              (Playing, keyboard::E) if !self.paused
+              (Playing, keyboard::W) | (Playing, keyboard::Up) if !self.paused
                         => self.active_tetromino.try_rotate_right(&self.board),
               (Playing, keyboard::Q) if !self.paused
                         => self.active_tetromino.try_rotate_left(&self.board),

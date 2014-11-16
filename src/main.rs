@@ -31,17 +31,7 @@ fn main() {
     );
 
     let mut app = tetris::Tetris::new(1.0);
-
-    let exe_path = self_exe_path();
-    // let exe_path = match exe_path {
-    //     Some(path) => path,
-    //     None => return Err(
-    //             "Could not get the path to executable".to_string()
-    //         ),
-    // };
-    // Ok(exe_path.join(Path::new("assets")));
-
-    let mut asset_path = exe_path.unwrap().join(Path::new("assets"));
+    let mut asset_path = self_exe_path().unwrap().join(Path::new("assets"));
     app.load_assets(&mut asset_path);
 
     let window = RefCell::new(window);
