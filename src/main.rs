@@ -7,10 +7,9 @@ extern crate event_loop;
 extern crate opengl_graphics;
 
 use std::cell::RefCell;
-use std::path;
 use std::os::self_exe_path;
 use sdl2_window::Sdl2Window;
-use event::{ WindowSettings, RenderEvent, UpdateEvent, Input};
+use event::{ WindowSettings, RenderEvent, UpdateEvent, PressEvent};
 use event_loop::Events;
 use self::opengl_graphics::Gl;
 
@@ -51,6 +50,6 @@ fn main() {
     for e in Events::new(&window) {
         e.render(|r| app.render(window.borrow_mut().deref_mut(), &mut gl, r));
         e.update(|u| app.update(window.borrow_mut().deref_mut(), u));
-        // e.input(|u| app.input(window.borrow_mut().deref_mut(), u));
+        e.press(|b| app.press(b));
     }
 }
