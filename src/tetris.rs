@@ -1,16 +1,17 @@
 extern crate input;
 extern crate graphics;
 
+// External Imports
 use std::default::Default;
 use opengl_graphics::{Gl, Texture};
 use event::{Window, UpdateArgs, RenderArgs,};
 use self::graphics::*;
 use self::input::{keyboard, Button, Keyboard,};
 
-
-
+// Project Imports
 use active::ActiveTetromino;
 use tetromino::Color;
+use self::State::*;
 
 pub const BOARD_WIDTH: uint = 10;
 pub const BOARD_HEIGHT: uint = 20;
@@ -66,7 +67,7 @@ impl Tetris  {
           self.state = Playing;
           let mut board: [[Option<Color>,..BOARD_WIDTH],..BOARD_HEIGHT] = [[None,..BOARD_WIDTH],..BOARD_HEIGHT];
           for (new,old) in board.iter_mut().rev().zip(self.board.iter().rev().filter(|row| row.iter().any(|color| color.is_some()))) {
-            *new = *old.clone();
+            *new = *old;
           }
           self.board = board;
           self.active_tetromino = ActiveTetromino::new();

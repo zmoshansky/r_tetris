@@ -1,7 +1,6 @@
-use tetris::{BOARD_WIDTH,BOARD_HEIGHT};
 use std::rand::{Rng,task_rng};
-use tetromino::{Tetromino,SHAPES,Color,Rotation,R0};
-
+use tetris::{BOARD_WIDTH,BOARD_HEIGHT};
+use tetromino::{Tetromino,SHAPES,Color,Rotation};
 static HIDDEN_ROWS: [uint,..3] = [-3, -2,-1];
 
 #[deriving(Clone)]
@@ -17,8 +16,8 @@ impl ActiveTetromino {
 		ActiveTetromino {
 			x: BOARD_WIDTH / 2 - 2,
 			y: HIDDEN_ROWS[0],
-			rotation: R0,
-			shape: task_rng().choose(SHAPES).unwrap()
+			rotation: Rotation::R0,
+			shape: task_rng().choose(&SHAPES).unwrap()
 		}
 	}
 

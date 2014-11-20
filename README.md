@@ -33,4 +33,5 @@ Play!
 ./bin/r_tetris
 ```
 
-Compiled Succesfully with `rustc 0.13.0-nightly (7e43f419c 2014-11-15 13:22:24 +0000)`
+Compiled Succesfully with `rustc 0.13.0-nightly (399ff259e 2014-11-20 00:27:07 +0000)`
+

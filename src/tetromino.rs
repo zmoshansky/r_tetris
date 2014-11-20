@@ -1,3 +1,6 @@
+use self::Rotation::*;
+use self::Color::*;
+
 pub static SHAPES: [Tetromino,..7] = [
 	Tetromino {
 		color: Cyan,
